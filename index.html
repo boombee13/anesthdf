@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบคำนวณค่าตอบแทน (ไม่บันทึกข้อมูล)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">คำนวณค่าตอบแทนรายวัน/OT</h2>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">ประเภทเวร / งาน</label>
+                <select id="shiftType" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">เลือกประเภทงาน...</option>
+                    <option value="100">เวรปกติ (100 บาท/ชม.)</option>
+                    <option value="150">เวรบ่าย/ดึก (150 บาท/ชม.)</option>
+                    <option value="200">OT วันหยุด (200 บาท/ชม.)</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">จำนวนชั่วโมงที่ทำ</label>
+                <input type="number" id="hours" min="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="เช่น 8">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">ค่าเบี้ยเลี้ยงพิเศษ / ค่าเดินทาง (บาท)</label>
+                <input type="number" id="bonus" min="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="ถ้าไม่มีให้เว้นว่าง">
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-lg font-semibold text-gray-700">ยอดรวมที่ได้รับ:</span>
+                <span id="totalAmount" class="text-3xl font-bold text-blue-600">0 บาท</span>
+            </div>
+            <button onclick="resetForm()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-200">
+                ล้างข้อมูล
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ดึง Elements มาเก็บไว้ในตัวแปร
+        const shiftTypeInput = document.getElementById('shiftType');
+        const hoursInput = document.getElementById('hours');
+        const bonusInput = document.getElementById('bonus');
+        const totalAmountDisplay = document.getElementById('totalAmount');
+
+        // ฟังก์ชันคำนวณยอดรวม
+        function calculateTotal() {
+            // แปลงค่าจาก Input เป็นตัวเลข (ถ้าว่างให้เป็น 0)
+            const rate = parseFloat(shiftTypeInput.value) || 0;
+            const hours = parseFloat(hoursInput.value) || 0;
+            const bonus = parseFloat(bonusInput.value) || 0;
+
+            // สูตรคำนวณ: (เรทต่อชั่วโมง * จำนวนชั่วโมง) + เบี้ยเลี้ยงพิเศษ
+            const total = (rate * hours) + bonus;
+
+            // แสดงผลลัพธ์ พร้อมใส่คอมม่าคั่นหลักพัน
+            totalAmountDisplay.innerText = total.toLocaleString() + ' บาท';
+        }
+
+        // ฟังก์ชันล้างข้อมูล
+        function resetForm() {
+            shiftTypeInput.value = "0";
+            hoursInput.value = "";
+            bonusInput.value = "";
+            calculateTotal(); // อัปเดตยอดกลับเป็น 0
+        }
+
+        // ตั้งค่าให้คำนวณอัตโนมัติทุกครั้งที่มีการพิมพ์หรือเปลี่ยนค่า (Real-time)
+        shiftTypeInput.addEventListener('change', calculateTotal);
+        hoursInput.addEventListener('input', calculateTotal);
+        bonusInput.addEventListener('input', calculateTotal);
+    </script>
+</body>
+</html>
