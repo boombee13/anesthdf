@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบคำนวณ Unit (Anesthesia)</title>
+    <title>Anesthesia Unit Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 
     <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">คำนวณ Unit ภาระงาน</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Anesthesia Unit Calculator</h2>
 
         <div class="space-y-5">
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">ASA Physical Status</label>
                 <select id="asa" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                    <option value="0">ระบุ ASA...</option>
+                    <option value="0">choose ...</option>
+                    <option value="1">0</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -61,10 +62,10 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Surgical Risk</label>
                 <select id="surgicalRisk" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                    <option value="0">เลือกระดับความเสี่ยง...</option>
-                    <option value="4">Moderate</option>
-                    <option value="8">High</option>
-                    <option value="12">Very High</option>
+                    <option value="0">choose...</option>
+                    <option value="4">Moderate Risk</option>
+                    <option value="8">High Risk</option>
+                    <option value="12">Very High Risk</option>
                 </select>
             </div>
 
