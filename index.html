@@ -146,3 +146,185 @@
 
             <div class="mt-8 pt-6 border-t border-slate-200">
                 <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold text-slate-700">Total Unit:</span>
+                    <span id="totalAmount" class="text-3xl font-bold text-teal-700">0</span>
+                </div>
+                <button onclick="resetForm()" class="w-full bg-green-100 hover:bg-green-200 text-teal-800 font-semibold py-2 px-4 rounded-lg transition duration-200">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div id="referencesContent" class="hidden space-y-4">
+            <h3 class="text-md font-semibold text-teal-800 mb-3">เอกสารอ้างอิง</h3>
+            
+            <a href="https://journals.lww.com/anesthesiologyopen/fulltext/2026/01000/american_society_of_anesthesiologists_statement_on.2.aspx" target="_blank" class="block p-4 border border-slate-200 rounded-lg hover:bg-green-50 hover:border-teal-300 transition duration-200 group">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-slate-900 group-hover:text-teal-700">ASA Physical Status Classification System</p>
+                        <p class="text-xs text-slate-500 mt-1">American Society of Anesthesiologists</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.uckkpho.com/wp-content/uploads/2023/06/%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B9%80%E0%B8%99%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C63_resize.pdf" target="_blank" class="block p-4 border border-slate-200 rounded-lg hover:bg-green-50 hover:border-teal-300 transition duration-200 group">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-slate-900 group-hover:text-teal-700">คู่มือค่าธรรมเนียมแพทย์ พ.ศ.2563</p>
+                        <p class="text-xs text-slate-500 mt-1">แพทยสภา (PDF)</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // ==================== (ส่วน JavaScript ยังคงเดิม ไม่มีการเปลี่ยนแปลง) ====================
+        const btnCalcTab = document.getElementById('btnCalcTab');
+        const btnRefTab = document.getElementById('btnRefTab');
+        const calculatorContent = document.getElementById('calculatorContent');
+        const referencesContent = document.getElementById('referencesContent');
+
+        function switchTab(tabName) {
+            if (tabName === 'calc') {
+                calculatorContent.classList.remove('hidden');
+                referencesContent.classList.add('hidden');
+                // อัปเดต class สีของ Tab ให้เป็น Teal
+                btnCalcTab.className = "flex-1 py-2 text-center font-semibold text-teal-600 border-b-2 border-teal-500 transition duration-200";
+                btnRefTab.className = "flex-1 py-2 text-center font-semibold text-slate-500 hover:text-teal-600 border-b-2 border-transparent transition duration-200";
+            } else {
+                calculatorContent.classList.add('hidden');
+                referencesContent.classList.remove('hidden');
+                // อัปเดต class สีของ Tab ให้เป็น Teal
+                btnRefTab.className = "flex-1 py-2 text-center font-semibold text-teal-600 border-b-2 border-teal-500 transition duration-200";
+                btnCalcTab.className = "flex-1 py-2 text-center font-semibold text-slate-500 hover:text-teal-600 border-b-2 border-transparent transition duration-200";
+            }
+        }
+
+        btnCalcTab.addEventListener('click', () => switchTab('calc'));
+        btnRefTab.addEventListener('click', () => switchTab('ref'));
+
+        const asaInput = document.getElementById('asa');
+        const emergencyInput = document.getElementById('emergency');
+        const surgicalRiskInput = document.getElementById('surgicalRisk');
+        const specialProcInputs = document.querySelectorAll('.special-proc');
+        const totalAmountDisplay = document.getElementById('totalAmount');
+
+        const timeRadios = document.querySelectorAll('input[name="timeMode"]');
+        const manualTimeArea = document.getElementById('manualTimeArea');
+        const autoTimeArea = document.getElementById('autoTimeArea');
+        const timeUnitInput = document.getElementById('timeUnit');
+        const startTimeInput = document.getElementById('startTime');
+        const endTimeInput = document.getElementById('endTime');
+        const durationDisplay = document.getElementById('durationDisplay');
+        const calculatedTimeUnitDisplay = document.getElementById('calculatedTimeUnit');
+
+        timeRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'manual') {
+                    manualTimeArea.classList.remove('hidden');
+                    autoTimeArea.classList.add('hidden');
+                } else {
+                    manualTimeArea.classList.add('hidden');
+                    autoTimeArea.classList.remove('hidden');
+                }
+                calculateTotal();
+            });
+        });
+
+        function getAutoTimeUnit() {
+            const start = startTimeInput.value;
+            const end = endTimeInput.value;
+            
+            if (!start || !end) {
+                durationDisplay.innerText = "0 นาที";
+                calculatedTimeUnitDisplay.innerText = "0";
+                return 0;
+            }
+
+            let [startH, startM] = start.split(':').map(Number);
+            let [endH, endM] = end.split(':').map(Number);
+            
+            let startTotalMins = (startH * 60) + startM;
+            let endTotalMins = (endH * 60) + endM;
+            
+            if (endTotalMins < startTotalMins) {
+                endTotalMins += (24 * 60);
+            }
+            
+            let durationMins = endTotalMins - startTotalMins;
+            durationDisplay.innerText = durationMins + " นาที";
+
+            let calculatedUnit = 0;
+            if (durationMins > 30) {
+                calculatedUnit = Math.ceil((durationMins - 30) / 15);
+            }
+            
+            calculatedTimeUnitDisplay.innerText = calculatedUnit;
+            return calculatedUnit;
+        }
+
+        function calculateTotal() {
+            const asa = parseFloat(asaInput.value) || 0;
+            const emergency = parseFloat(emergencyInput.value) || 0;
+            const surgicalRisk = parseFloat(surgicalRiskInput.value) || 0;
+
+            let specialProcTotal = 0;
+            specialProcInputs.forEach(input => {
+                if (input.checked) {
+                    specialProcTotal += 2;
+                }
+            });
+
+            const activeTimeMode = document.querySelector('input[name="timeMode"]:checked').value;
+            let timeUnit = 0;
+            if (activeTimeMode === 'manual') {
+                timeUnit = parseFloat(timeUnitInput.value) || 0;
+            } else {
+                timeUnit = getAutoTimeUnit();
+            }
+
+            const total = 6 + asa + emergency + specialProcTotal + surgicalRisk + timeUnit;
+            totalAmountDisplay.innerText = total;
+        }
+
+        function resetForm() {
+            asaInput.value = "0";
+            emergencyInput.value = "0";
+            surgicalRiskInput.value = "0";
+            
+            specialProcInputs.forEach(input => {
+                input.checked = false;
+            });
+
+            document.querySelector('input[name="timeMode"][value="manual"]').checked = true;
+            manualTimeArea.classList.remove('hidden');
+            autoTimeArea.classList.add('hidden');
+            timeUnitInput.value = "";
+            startTimeInput.value = "";
+            endTimeInput.value = "";
+            durationDisplay.innerText = "0 นาที";
+            calculatedTimeUnitDisplay.innerText = "0";
+
+            calculateTotal(); 
+        }
+
+        asaInput.addEventListener('change', calculateTotal);
+        emergencyInput.addEventListener('change', calculateTotal);
+        surgicalRiskInput.addEventListener('change', calculateTotal);
+        specialProcInputs.forEach(input => input.addEventListener('change', calculateTotal));
+        
+        timeUnitInput.addEventListener('input', calculateTotal);
+        startTimeInput.addEventListener('change', calculateTotal);
+        endTimeInput.addEventListener('change', calculateTotal);
+        
+        calculateTotal();
+    </script>
+</body>
+</html>
