@@ -3,40 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบคำนวณค่าตอบแทน (ไม่บันทึกข้อมูล)</title>
+    <title>ระบบคำนวณ Unit (Anesthesia)</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 
     <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">คำนวณค่าตอบแทนรายวัน/OT</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">คำนวณ Unit ภาระงาน</h2>
 
-        <div class="space-y-4">
+        <div class="space-y-5">
+            
             <div>
-                <label class="block text-sm font-medium text-gray-700">ประเภทเวร / งาน</label>
-                <select id="shiftType" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                    <option value="0">เลือกประเภทงาน...</option>
-                    <option value="100">เวรปกติ (100 บาท/ชม.)</option>
-                    <option value="150">เวรบ่าย/ดึก (150 บาท/ชม.)</option>
-                    <option value="200">OT วันหยุด (200 บาท/ชม.)</option>
+                <label class="block text-sm font-medium text-gray-700 mb-1">ASA Physical Status</label>
+                <select id="asa" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">ระบุ ASA...</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700">จำนวนชั่วโมงที่ทำ</label>
-                <input type="number" id="hours" min="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="เช่น 8">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Emergency</label>
+                <select id="emergency" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700">ค่าเบี้ยเลี้ยงพิเศษ / ค่าเดินทาง (บาท)</label>
-                <input type="number" id="bonus" min="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="ถ้าไม่มีให้เว้นว่าง">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Special Procedure (เลือกได้มากกว่า 1)</label>
+                <div class="space-y-2 bg-gray-50 p-3 rounded-md border border-gray-200">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <span class="text-gray-700">A line</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <span class="text-gray-700">C line</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <span class="text-gray-700">PA cath</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <span class="text-gray-700">Fiberoptic intubation</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <span class="text-gray-700">DLT</span>
+                    </label>
+                </div>
             </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Surgical Risk</label>
+                <select id="surgicalRisk" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">เลือกระดับความเสี่ยง...</option>
+                    <option value="4">Moderate</option>
+                    <option value="8">High</option>
+                    <option value="12">Very High</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Time Unit</label>
+                <input type="number" id="timeUnit" min="0" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="กรอกจำนวน Time Unit">
+            </div>
+
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
             <div class="flex justify-between items-center mb-4">
-                <span class="text-lg font-semibold text-gray-700">ยอดรวมที่ได้รับ:</span>
-                <span id="totalAmount" class="text-3xl font-bold text-blue-600">0 บาท</span>
+                <span class="text-lg font-semibold text-gray-700">Total Unit:</span>
+                <span id="totalAmount" class="text-3xl font-bold text-blue-600">0</span>
             </div>
             <button onclick="resetForm()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-200">
                 ล้างข้อมูล
@@ -46,37 +88,60 @@
 
     <script>
         // ดึง Elements มาเก็บไว้ในตัวแปร
-        const shiftTypeInput = document.getElementById('shiftType');
-        const hoursInput = document.getElementById('hours');
-        const bonusInput = document.getElementById('bonus');
+        const asaInput = document.getElementById('asa');
+        const emergencyInput = document.getElementById('emergency');
+        const surgicalRiskInput = document.getElementById('surgicalRisk');
+        const timeUnitInput = document.getElementById('timeUnit');
+        const specialProcInputs = document.querySelectorAll('.special-proc');
         const totalAmountDisplay = document.getElementById('totalAmount');
 
-        // ฟังก์ชันคำนวณยอดรวม
+        // ฟังก์ชันคำนวณยอด Unit รวม
         function calculateTotal() {
-            // แปลงค่าจาก Input เป็นตัวเลข (ถ้าว่างให้เป็น 0)
-            const rate = parseFloat(shiftTypeInput.value) || 0;
-            const hours = parseFloat(hoursInput.value) || 0;
-            const bonus = parseFloat(bonusInput.value) || 0;
+            const asa = parseFloat(asaInput.value) || 0;
+            const emergency = parseFloat(emergencyInput.value) || 0;
+            const surgicalRisk = parseFloat(surgicalRiskInput.value) || 0;
+            const timeUnit = parseFloat(timeUnitInput.value) || 0;
 
-            // สูตรคำนวณ: (เรทต่อชั่วโมง * จำนวนชั่วโมง) + เบี้ยเลี้ยงพิเศษ
-            const total = (rate * hours) + bonus;
+            // คำนวณ Special Procedure (บวกข้อละ 2 unit สำหรับข้อที่ถูกติ๊ก)
+            let specialProcTotal = 0;
+            specialProcInputs.forEach(input => {
+                if (input.checked) {
+                    specialProcTotal += 2;
+                }
+            });
 
-            // แสดงผลลัพธ์ พร้อมใส่คอมม่าคั่นหลักพัน
-            totalAmountDisplay.innerText = total.toLocaleString() + ' บาท';
+            // รวมค่า Unit ทั้งหมด
+            const total = asa + emergency + specialProcTotal + surgicalRisk + timeUnit;
+
+            // แสดงผลลัพธ์
+            totalAmountDisplay.innerText = total;
         }
 
-        // ฟังก์ชันล้างข้อมูล
+        // ฟังก์ชันล้างข้อมูลเมื่อขึ้นเคสใหม่
         function resetForm() {
-            shiftTypeInput.value = "0";
-            hoursInput.value = "";
-            bonusInput.value = "";
+            asaInput.value = "0";
+            emergencyInput.value = "0";
+            surgicalRiskInput.value = "0";
+            timeUnitInput.value = "";
+            
+            // ล้างการติ๊ก Checkbox ทั้งหมด
+            specialProcInputs.forEach(input => {
+                input.checked = false;
+            });
+
             calculateTotal(); // อัปเดตยอดกลับเป็น 0
         }
 
-        // ตั้งค่าให้คำนวณอัตโนมัติทุกครั้งที่มีการพิมพ์หรือเปลี่ยนค่า (Real-time)
-        shiftTypeInput.addEventListener('change', calculateTotal);
-        hoursInput.addEventListener('input', calculateTotal);
-        bonusInput.addEventListener('input', calculateTotal);
+        // ตั้งค่าให้คำนวณอัตโนมัติเมื่อมีการเปลี่ยนค่า
+        asaInput.addEventListener('change', calculateTotal);
+        emergencyInput.addEventListener('change', calculateTotal);
+        surgicalRiskInput.addEventListener('change', calculateTotal);
+        timeUnitInput.addEventListener('input', calculateTotal);
+        
+        // ผูก Event ให้กับ Checkbox ทุกตัว
+        specialProcInputs.forEach(input => {
+            input.addEventListener('change', calculateTotal);
+        });
     </script>
 </body>
 </html>
