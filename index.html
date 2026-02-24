@@ -9,143 +9,204 @@
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 
     <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Anesthesia Unit Calculator</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Anesthesia Unit Calculator</h2>
 
-        <div class="space-y-5">
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">ASA Physical Status</label>
-                <select id="asa" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                    <option value="0">choose ...</option>
-                    <option value="0">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Emergency</label>
-                <select id="emergency" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Special Procedure</label>
-                <div class="space-y-2 bg-gray-50 p-3 rounded-md border border-gray-200">
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
-                        <span class="text-gray-700">Arterial Cannulation</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
-                        <span class="text-gray-700">Central Venous Cannulation</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
-                        <span class="text-gray-700">Pulmonary Artery Catheter Insertion</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
-                        <span class="text-gray-700">Fiberoptic Endotracheal Intubation</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
-                        <span class="text-gray-700">Double Lumen Endotracheal Tube</span>
-                    </label>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Surgical Risk</label>
-                <select id="surgicalRisk" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                    <option value="0">choose...</option>
-                    
-                    <optgroup label="Moderate Surgical Risk">
-                        <option value="4">การผ่าตัดในช่วงทรวงอก ปอด หลอดอาหาร</option>
-                        <option value="4">การผ่าตัดใหญ่เปิดกะโหลกศีรษะจาก Head Injuries</option>
-                        <option value="4">การผ่าตัดใหญ่ของ Larynx และ Trachea</option>
-                        <option value="4">หัตถการที่ต้องอยู่ในห้อง CT, MRI, X-Ray หรือ Interventional Suite</option>
-                    </optgroup>
-                    
-                    <optgroup label="High Surgical Risk">
-                        <option value="8">การผ่าตัดใหญ่เปิดกะโหลกศีรษะที่ไม่ใช่ Head Injuries</option>
-                        <option value="8">Major Craniofacial Reconstruction</option>
-                        <option value="8">การผ่าตัด Closed Heart ที่ไม่ใช้ Cardiopulmonary Bypass</option>
-                    </optgroup>
-                    
-                    <optgroup label="Very High Surgical Risk">
-                        <option value="12">การผ่าตัดที่ต้องใช้ Cardiopulmonary Bypass</option>
-                        <option value="12">การผ่าตัดหลอดเลือดแดงใหญ่ (Aorta) ในช่องท้องหรือทรวงอก</option>
-                        <option value="12">การผ่าตัด Major Organ Transplant ได้แก่ หัวใจ ปอด ตับ (ยกเว้นไตและกระจกตา)</option>
-                        <option value="12">การผ่าตัดเพื่อตัดต่อหลอดเลือดที่ไปเลี้ยงสมอง</option>
-                        
-                    </optgroup>
-                    
-                </select>
-            </div>
-
-            <div class="pt-2">
-                <label class="block text-sm font-medium text-gray-700 mb-3">Time Unit</label>
-                
-                <div class="flex space-x-5 mb-3 bg-white">
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" name="timeMode" value="manual" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300">
-                        <span class="text-sm text-gray-700">กรอกจำนวน Unit เอง</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" name="timeMode" value="auto" class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300">
-                        <span class="text-sm text-gray-700">คำนวณจากเวลา</span>
-                    </label>
-                </div>
-
-                <div id="manualTimeArea">
-                    <input type="number" id="timeUnit" min="0" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)">
-                </div>
-
-                <div id="autoTimeArea" class="hidden space-y-3 p-4 bg-gray-50 rounded-md border border-gray-200">
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
-                            <label class="block text-xs font-medium text-gray-500 mb-1">เวลาเริ่ม (Start)</label>
-                            <input type="time" id="startTime" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div class="w-1/2">
-                            <label class="block text-xs font-medium text-gray-500 mb-1">เวลาสิ้นสุด (End)</label>
-                            <input type="time" id="endTime" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pt-3 border-t border-gray-200">
-                        <span class="text-sm text-gray-600">ระยะเวลา: <span id="durationDisplay" class="font-semibold text-gray-800">0 นาที</span></span>
-                        <span class="text-sm text-gray-600">คิดเป็น: <span id="calculatedTimeUnit" class="font-bold text-lg text-blue-600">0</span> Unit</span>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-1">* ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)</p>
-                </div>
-            </div>
-
+        <div class="flex border-b mb-6">
+            <button id="btnCalcTab" class="flex-1 py-2 text-center font-semibold text-blue-600 border-b-2 border-blue-600 transition duration-200">
+                Calculator
+            </button>
+            <button id="btnRefTab" class="flex-1 py-2 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent transition duration-200">
+                References
+            </button>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-gray-200">
-            <div class="flex justify-between items-center mb-4">
-                <span class="text-lg font-semibold text-gray-700">Total Unit:</span>
-                <span id="totalAmount" class="text-3xl font-bold text-blue-600">0</span>
+        <div id="calculatorContent">
+            <div class="space-y-5">
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">ASA Physical Status</label>
+                    <select id="asa" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                        <option value="0">choose ...</option>
+                        <option value="0">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Emergency</label>
+                    <select id="emergency" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Special Procedure</label>
+                    <div class="space-y-2 bg-gray-50 p-3 rounded-md border border-gray-200">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <span class="text-gray-700">Arterial Cannulation</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <span class="text-gray-700">Central Venous Cannulation</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <span class="text-gray-700">Pulmonary Artery Catheter Insertion</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <span class="text-gray-700">Fiberoptic Endotracheal Intubation</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" class="special-proc w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <span class="text-gray-700">Double Lumen Endotracheal Tube</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Surgical Risk</label>
+                    <select id="surgicalRisk" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                        <option value="0">choose...</option>
+                        
+                        <optgroup label="Moderate Surgical Risk">
+                            <option value="4">การผ่าตัดในช่วงทรวงอก ปอด หลอดอาหาร</option>
+                            <option value="4">การผ่าตัดใหญ่เปิดกะโหลกศีรษะจาก Head Injuries</option>
+                            <option value="4">การผ่าตัดใหญ่ของ Larynx และ Trachea</option>
+                            <option value="4">หัตถการที่ต้องอยู่ในห้อง CT, MRI, X-Ray หรือ Interventional Suite</option>
+                        </optgroup>
+                        
+                        <optgroup label="High Surgical Risk">
+                            <option value="8">การผ่าตัดใหญ่เปิดกะโหลกศีรษะที่ไม่ใช่ Head Injuries</option>
+                            <option value="8">Major Craniofacial Reconstruction</option>
+                            <option value="8">การผ่าตัด Closed Heart ที่ไม่ใช้ Cardiopulmonary Bypass</option>
+                        </optgroup>
+                        
+                        <optgroup label="Very High Surgical Risk">
+                            <option value="12">การผ่าตัดที่ต้องใช้ Cardiopulmonary Bypass</option>
+                            <option value="12">การผ่าตัดหลอดเลือดแดงใหญ่ (Aorta) ในช่องท้องหรือทรวงอก</option>
+                            <option value="12">การผ่าตัด Major Organ Transplant ได้แก่ หัวใจ ปอด ตับ (ยกเว้นไตและกระจกตา)</option>
+                            <option value="12">การผ่าตัดเพื่อตัดต่อหลอดเลือดที่ไปเลี้ยงสมอง</option>
+                        </optgroup>
+                        
+                    </select>
+                </div>
+
+                <div class="pt-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-3">Time Unit</label>
+                    
+                    <div class="flex space-x-5 mb-3 bg-white">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="timeMode" value="manual" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                            <span class="text-sm text-gray-700">กรอกจำนวน Unit เอง</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="timeMode" value="auto" class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                            <span class="text-sm text-gray-700">คำนวณจากเวลา</span>
+                        </label>
+                    </div>
+
+                    <div id="manualTimeArea">
+                        <input type="number" id="timeUnit" min="0" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)">
+                    </div>
+
+                    <div id="autoTimeArea" class="hidden space-y-3 p-4 bg-gray-50 rounded-md border border-gray-200">
+                        <div class="flex space-x-4">
+                            <div class="w-1/2">
+                                <label class="block text-xs font-medium text-gray-500 mb-1">เวลาเริ่ม (Start)</label>
+                                <input type="time" id="startTime" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="w-1/2">
+                                <label class="block text-xs font-medium text-gray-500 mb-1">เวลาสิ้นสุด (End)</label>
+                                <input type="time" id="endTime" class="block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-200">
+                            <span class="text-sm text-gray-600">ระยะเวลา: <span id="durationDisplay" class="font-semibold text-gray-800">0 นาที</span></span>
+                            <span class="text-sm text-gray-600">คิดเป็น: <span id="calculatedTimeUnit" class="font-bold text-lg text-blue-600">0</span> Unit</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1">* ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)</p>
+                    </div>
+                </div>
+
             </div>
-            <button onclick="resetForm()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-200">
-                Reset
-            </button>
+
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold text-gray-700">Total Unit:</span>
+                    <span id="totalAmount" class="text-3xl font-bold text-blue-600">0</span>
+                </div>
+                <button onclick="resetForm()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-200">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div id="referencesContent" class="hidden space-y-4">
+            <h3 class="text-md font-semibold text-gray-700 mb-3">เอกสารอ้างอิงและเกณฑ์การประเมิน</h3>
+            
+            <a href="https://journals.lww.com/anesthesiologyopen/fulltext/2026/01000/american_society_of_anesthesiologists_statement_on.2.aspx" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition duration-200 group">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-900 group-hover:text-blue-700">ASA Physical Status Classification System</p>
+                        <p class="text-xs text-gray-500 mt-1">American Society of Anesthesiologists Statement</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.uckkpho.com/wp-content/uploads/2023/06/%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B9%80%E0%B8%99%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C63_resize.pdf" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition duration-200 group">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-gray-900 group-hover:text-blue-700">คู่มืออัตราค่าธรรมเนียมแพทย์</p>
+                        <p class="text-xs text-gray-500 mt-1">แพทยสภา (PDF)</p>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 
     <script>
+        // ==================== ระบบ Tab Navigation ====================
+        const btnCalcTab = document.getElementById('btnCalcTab');
+        const btnRefTab = document.getElementById('btnRefTab');
+        const calculatorContent = document.getElementById('calculatorContent');
+        const referencesContent = document.getElementById('referencesContent');
+
+        function switchTab(tabName) {
+            if (tabName === 'calc') {
+                calculatorContent.classList.remove('hidden');
+                referencesContent.classList.add('hidden');
+                btnCalcTab.className = "flex-1 py-2 text-center font-semibold text-blue-600 border-b-2 border-blue-600 transition duration-200";
+                btnRefTab.className = "flex-1 py-2 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent transition duration-200";
+            } else {
+                calculatorContent.classList.add('hidden');
+                referencesContent.classList.remove('hidden');
+                btnRefTab.className = "flex-1 py-2 text-center font-semibold text-blue-600 border-b-2 border-blue-600 transition duration-200";
+                btnCalcTab.className = "flex-1 py-2 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent transition duration-200";
+            }
+        }
+
+        btnCalcTab.addEventListener('click', () => switchTab('calc'));
+        btnRefTab.addEventListener('click', () => switchTab('ref'));
+
+        // ==================== ระบบ Calculator เดิม ====================
         const asaInput = document.getElementById('asa');
         const emergencyInput = document.getElementById('emergency');
         const surgicalRiskInput = document.getElementById('surgicalRisk');
         const specialProcInputs = document.querySelectorAll('.special-proc');
         const totalAmountDisplay = document.getElementById('totalAmount');
 
-        // ตัวแปรสำหรับ Time Unit
         const timeRadios = document.querySelectorAll('input[name="timeMode"]');
         const manualTimeArea = document.getElementById('manualTimeArea');
         const autoTimeArea = document.getElementById('autoTimeArea');
@@ -155,7 +216,6 @@
         const durationDisplay = document.getElementById('durationDisplay');
         const calculatedTimeUnitDisplay = document.getElementById('calculatedTimeUnit');
 
-        // ฟังก์ชันสลับการแสดงผลโหมดเวลา
         timeRadios.forEach(radio => {
             radio.addEventListener('change', (e) => {
                 if (e.target.value === 'manual') {
@@ -169,7 +229,6 @@
             });
         });
 
-        // ฟังก์ชันคำนวณเวลาอัตโนมัติ
         function getAutoTimeUnit() {
             const start = startTimeInput.value;
             const end = endTimeInput.value;
@@ -180,14 +239,12 @@
                 return 0;
             }
 
-            // แยกชั่วโมงและนาทีมาคำนวณ
             let [startH, startM] = start.split(':').map(Number);
             let [endH, endM] = end.split(':').map(Number);
             
             let startTotalMins = (startH * 60) + startM;
             let endTotalMins = (endH * 60) + endM;
             
-            // ดักกรณีผ่าตัดข้ามวัน (เช่น 23:00 - 02:00)
             if (endTotalMins < startTotalMins) {
                 endTotalMins += (24 * 60);
             }
@@ -195,7 +252,6 @@
             let durationMins = endTotalMins - startTotalMins;
             durationDisplay.innerText = durationMins + " นาที";
 
-            // คำนวณ Unit: เกิน 30 นาทีแรก เอาส่วนที่เกินมาหาร 15 (เศษปัดขึ้น)
             let calculatedUnit = 0;
             if (durationMins > 30) {
                 calculatedUnit = Math.ceil((durationMins - 30) / 15);
@@ -205,7 +261,6 @@
             return calculatedUnit;
         }
 
-        // ฟังก์ชันคำนวณยอด Unit รวมหลัก
         function calculateTotal() {
             const asa = parseFloat(asaInput.value) || 0;
             const emergency = parseFloat(emergencyInput.value) || 0;
@@ -218,7 +273,6 @@
                 }
             });
 
-            // ตรวจสอบว่าผู้ใช้อยู่ในโหมดเวลาแบบไหน แล้วดึงค่าจากโหมดนั้นมาใช้
             const activeTimeMode = document.querySelector('input[name="timeMode"]:checked').value;
             let timeUnit = 0;
             if (activeTimeMode === 'manual') {
@@ -231,7 +285,6 @@
             totalAmountDisplay.innerText = total;
         }
 
-        // ฟังก์ชันล้างข้อมูลเมื่อขึ้นเคสใหม่
         function resetForm() {
             asaInput.value = "0";
             emergencyInput.value = "0";
@@ -241,7 +294,6 @@
                 input.checked = false;
             });
 
-            // Reset ส่วนของเวลา
             document.querySelector('input[name="timeMode"][value="manual"]').checked = true;
             manualTimeArea.classList.remove('hidden');
             autoTimeArea.classList.add('hidden');
@@ -254,7 +306,6 @@
             calculateTotal(); 
         }
 
-        // ตั้งค่าให้คำนวณอัตโนมัติเมื่อมีการเปลี่ยนค่าทั้งหมด
         asaInput.addEventListener('change', calculateTotal);
         emergencyInput.addEventListener('change', calculateTotal);
         surgicalRiskInput.addEventListener('change', calculateTotal);
