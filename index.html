@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anesthesia Unit Calculator</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // ปรับแต่ง Tailwind config เล็กน้อยเพื่อให้ได้สี Teal ที่ดูนุ่มนวลขึ้นสำหรับธีมพาสเทล
+        // ตั้งค่า Tailwind ให้ใช้ฟอนต์ Sarabun เป็นฟอนต์หลัก
         tailwind.config = {
           theme: {
             extend: {
-              colors: {
-                // สามารถเพิ่ม custom color ตรงนี้ได้ถ้าต้องการ แต่การใช้ palette มาตรฐานของ tailwind (teal/green/slate) ก็เพียงพอสำหรับลุคนี้
+              fontFamily: {
+                sans: ['Sarabun', 'sans-serif'],
               }
             }
           }
         }
-      </script>
+    </script>
 </head>
-<body class="bg-green-50 min-h-screen flex items-center justify-center p-4 font-sans">
+<body class="bg-green-50 min-h-screen flex items-center justify-center p-4 text-slate-800">
 
     <div class="bg-white p-8 rounded-xl shadow-lg shadow-green-100/50 w-full max-w-md">
         <h2 class="text-2xl font-bold text-teal-800 mb-4 text-center">Anesthesia Unit Calculator</h2>
@@ -185,7 +190,6 @@
     </div>
 
     <script>
-        // ==================== (ส่วน JavaScript ยังคงเดิม ไม่มีการเปลี่ยนแปลง) ====================
         const btnCalcTab = document.getElementById('btnCalcTab');
         const btnRefTab = document.getElementById('btnRefTab');
         const calculatorContent = document.getElementById('calculatorContent');
@@ -195,13 +199,11 @@
             if (tabName === 'calc') {
                 calculatorContent.classList.remove('hidden');
                 referencesContent.classList.add('hidden');
-                // อัปเดต class สีของ Tab ให้เป็น Teal
                 btnCalcTab.className = "flex-1 py-2 text-center font-semibold text-teal-600 border-b-2 border-teal-500 transition duration-200";
                 btnRefTab.className = "flex-1 py-2 text-center font-semibold text-slate-500 hover:text-teal-600 border-b-2 border-transparent transition duration-200";
             } else {
                 calculatorContent.classList.add('hidden');
                 referencesContent.classList.remove('hidden');
-                // อัปเดต class สีของ Tab ให้เป็น Teal
                 btnRefTab.className = "flex-1 py-2 text-center font-semibold text-teal-600 border-b-2 border-teal-500 transition duration-200";
                 btnCalcTab.className = "flex-1 py-2 text-center font-semibold text-slate-500 hover:text-teal-600 border-b-2 border-transparent transition duration-200";
             }
