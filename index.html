@@ -41,7 +41,7 @@
                 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">ASA Physical Status</label>
-                    <select id="asa" class="block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400">
+                    <select id="asa" class="bg-white block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400">
                         <option value="0">choose ...</option>
                         <option value="0">1</option>
                         <option value="2">2</option>
@@ -53,7 +53,7 @@
 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">Emergency</label>
-                    <select id="emergency" class="block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400">
+                    <select id="emergency" class="bg-white block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400">
                         <option value="0">No</option>
                         <option value="1">Yes</option>
                     </select>
@@ -63,23 +63,23 @@
                     <label class="block text-sm font-medium text-slate-700 mb-2">Special Procedure</label>
                     <div class="space-y-2 bg-green-50 px-5 py-3 rounded-2xl border border-green-100">
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" class="special-proc w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-400">
+                            <input type="checkbox" class="special-proc w-4 h-4 bg-white text-teal-500 rounded border-slate-300 focus:ring-teal-400">
                             <span class="text-slate-700">Arterial Cannulation</span>
                         </label>
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" class="special-proc w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-400">
+                            <input type="checkbox" class="special-proc w-4 h-4 bg-white text-teal-500 rounded border-slate-300 focus:ring-teal-400">
                             <span class="text-slate-700">Central Venous Cannulation</span>
                         </label>
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" class="special-proc w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-400">
+                            <input type="checkbox" class="special-proc w-4 h-4 bg-white text-teal-500 rounded border-slate-300 focus:ring-teal-400">
                             <span class="text-slate-700">Pulmonary Artery Catheter Insertion</span>
                         </label>
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" class="special-proc w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-400">
+                            <input type="checkbox" class="special-proc w-4 h-4 bg-white text-teal-500 rounded border-slate-300 focus:ring-teal-400">
                             <span class="text-slate-700">Fiberoptic Endotracheal Intubation</span>
                         </label>
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" class="special-proc w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-400">
+                            <input type="checkbox" class="special-proc w-4 h-4 bg-white text-teal-500 rounded border-slate-300 focus:ring-teal-400">
                             <span class="text-slate-700">Double Lumen Endotracheal Tube</span>
                         </label>
                     </div>
@@ -87,7 +87,7 @@
 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">Surgical Risk</label>
-                    <select id="surgicalRisk" class="block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400">
+                    <select id="surgicalRisk" class="bg-white block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400">
                         <option value="0">choose...</option>
                         
                         <optgroup label="Moderate Surgical Risk" class="text-slate-900 font-semibold">
@@ -118,35 +118,35 @@
                     
                     <div class="flex space-x-5 mb-3 bg-white">
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="timeMode" value="manual" checked class="w-4 h-4 text-teal-500 focus:ring-teal-400 border-slate-300">
+                            <input type="radio" name="timeMode" value="manual" checked class="w-4 h-4 bg-white text-teal-500 focus:ring-teal-400 border-slate-300">
                             <span class="text-sm text-slate-700">กรอกจำนวน Unit เอง</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="timeMode" value="auto" class="w-4 h-4 text-teal-500 focus:ring-teal-400 border-slate-300">
+                            <input type="radio" name="timeMode" value="auto" class="w-4 h-4 bg-white text-teal-500 focus:ring-teal-400 border-slate-300">
                             <span class="text-sm text-slate-700">คำนวณจากเวลา</span>
                         </label>
                     </div>
 
                     <div id="manualTimeArea">
-                        <input type="number" id="timeUnit" min="0" class="block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400 placeholder-slate-400 placeholder:text-[12px]" placeholder="ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)">
+                        <input type="number" id="timeUnit" min="0" class="bg-white block w-full rounded-3xl border-slate-300 shadow-sm px-5 py-2.5 border focus:ring-teal-400 focus:border-teal-400 placeholder-slate-400 placeholder:text-[12px]" placeholder="ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)">
                     </div>
 
                     <div id="autoTimeArea" class="hidden space-y-3 p-4 bg-green-50 rounded-2xl border border-green-100">
                         <div class="flex space-x-4">
                             <div class="w-1/2">
                                 <label class="block text-xs font-medium text-slate-500 mb-1">เวลาเริ่ม (Start)</label>
-                                <input type="time" id="startTime" class="block w-full rounded-md border-slate-300 shadow-sm px-3 py-2 border focus:ring-teal-400 focus:border-teal-400">
+                                <input type="time" id="startTime" class="bg-white block w-full rounded-md border-slate-300 shadow-sm px-3 py-2 border focus:ring-teal-400 focus:border-teal-400">
                             </div>
                             <div class="w-1/2">
                                 <label class="block text-xs font-medium text-slate-500 mb-1">เวลาสิ้นสุด (End)</label>
-                                <input type="time" id="endTime" class="block w-full rounded-md border-slate-300 shadow-sm px-3 py-2 border focus:ring-teal-400 focus:border-teal-400">
+                                <input type="time" id="endTime" class="bg-white block w-full rounded-md border-slate-300 shadow-sm px-3 py-2 border focus:ring-teal-400 focus:border-teal-400">
                             </div>
                         </div>
                         <div class="flex justify-between items-center pt-3 border-t border-green-200">
                             <span class="text-sm text-slate-600">ระยะเวลา: <span id="durationDisplay" class="font-semibold text-slate-800">0 นาที</span></span>
                             <span class="text-sm text-slate-600">คิดเป็น: <span id="calculatedTimeUnit" class="font-bold text-lg text-teal-600">0</span> Unit</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-1">* ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)</p>
+                        <p class="text-[11px] text-slate-400 mt-1">* ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)</p>
                     </div>
                 </div>
 
