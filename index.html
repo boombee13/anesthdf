@@ -62,7 +62,7 @@
 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-2">Special Procedure</label>
-                    <div class="space-y-2 bg-green-50 p-3 rounded-3xl border border-green-100">
+                    <div class="space-y-2 bg-green-50 p-3 rounded-2xl border border-green-100">
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input type="checkbox" class="special-proc w-4 h-4 text-teal-500 rounded border-slate-300 focus:ring-teal-400">
                             <span class="text-slate-700">Arterial Cannulation</span>
@@ -128,15 +128,15 @@
                         <input type="number" id="timeUnit" min="0" class="block w-full rounded-3xl border-slate-300 shadow-sm p-2 border focus:ring-teal-400 focus:border-teal-400 placeholder-slate-400" placeholder="ทุก 15 นาทีที่เกินจาก 30 นาทีแรก คิดเป็น 1 unit (เศษปัดขึ้น)">
                     </div>
 
-                    <div id="autoTimeArea" class="hidden space-y-3 p-4 bg-green-50 rounded-3xl border border-green-100">
+                    <div id="autoTimeArea" class="hidden space-y-3 p-4 bg-green-50 rounded-2xl border border-green-100">
                         <div class="flex space-x-4">
                             <div class="w-1/2">
                                 <label class="block text-xs font-medium text-slate-500 mb-1">เวลาเริ่ม (Start)</label>
-                                <input type="time" id="startTime" class="block w-full rounded-3xl border-slate-300 shadow-sm p-2 border focus:ring-teal-400 focus:border-teal-400">
+                                <input type="time" id="startTime" class="block w-full rounded-md border-slate-300 shadow-sm p-2 border focus:ring-teal-400 focus:border-teal-400">
                             </div>
                             <div class="w-1/2">
                                 <label class="block text-xs font-medium text-slate-500 mb-1">เวลาสิ้นสุด (End)</label>
-                                <input type="time" id="endTime" class="block w-full rounded-3xl border-slate-300 shadow-sm p-2 border focus:ring-teal-400 focus:border-teal-400">
+                                <input type="time" id="endTime" class="block w-full rounded-md border-slate-300 shadow-sm p-2 border focus:ring-teal-400 focus:border-teal-400">
                             </div>
                         </div>
                         <div class="flex justify-between items-center pt-3 border-t border-green-200">
@@ -154,7 +154,7 @@
                     <span class="text-lg font-semibold text-slate-700">Total Unit:</span>
                     <span id="totalAmount" class="text-3xl font-bold text-teal-700">0</span>
                 </div>
-                <button onclick="resetForm()" class="w-full bg-green-100 hover:bg-green-200 text-teal-800 font-semibold py-2 px-4 rounded-3xl transition duration-200">
+                <button onclick="resetForm()" class="w-full bg-green-100 hover:bg-green-200 text-teal-800 font-semibold py-2 px-4 rounded-lg transition duration-200">
                     Reset
                 </button>
             </div>
